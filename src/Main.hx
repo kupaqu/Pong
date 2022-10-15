@@ -8,18 +8,14 @@ class Main extends hxd.App {
     var console: h2d.Console;
 
     override function init() {
-        ball = new Ball(10, s2d);
-        
-        player = new Player(10, 75, 50, s2d);
-        bot = new Bot(10, 75, 50, s2d);
-        // console = new h2d.Console(hxd.res.DefaultFont.get(), s2d);
-        // console.show();
+        player = new Player(20, 100, 75, s2d);
+        bot = new Bot(20, 100, 75, s2d);
+        ball = new Ball(20, s2d, bot, player);
     }
 
     override function update(dt: Float) {
         player.update(s2d);
-        ball.update(s2d);
-        // console.log(player.hitbox.toString());
+        ball.update();
     }
 
     static function main() {
