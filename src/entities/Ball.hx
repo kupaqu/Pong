@@ -4,8 +4,8 @@ import screens.*;
 
 class Ball extends h2d.Bitmap {
     public var direction: h3d.Vector;
-    public var currentSpeed: Float;
-    var startSpeed = 10;
+    var currentSpeed: Float;
+    public var startSpeed: Float = 10;
     
     public function new(parent: Screen) {
         super(h2d.Tile.fromColor(0xFFFFFF, 20, 20), parent);

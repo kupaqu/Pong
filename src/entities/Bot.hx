@@ -14,9 +14,7 @@ class Bot extends h2d.Bitmap {
     }
 
     public function update(dt: Float) {
-        if (Math.abs(ball.y - y) > this.height/2) {
-            y += (ball.y - y) * 0.1;
-        }
+        y += (ball.y - y) * 0.1;
     }
 
     public function setToStart() {

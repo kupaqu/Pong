@@ -14,16 +14,16 @@ class Game extends Screen {
         ball = new Ball(this);
         player = new Player(this);
         bot = new Bot(ball, this);
-        score = new Score(this);
+        score = new Score(this, app);
     }
 
     override public function update(dt: Float) {
         // используем свойство разности векторов
         if (ball.getBounds().intersects(player.getBounds())) {
-            ball.direction = new h3d.Vector(ball.x - player.x, ball.y - player.y).normalized();
+            ball.direction = new h3d.Vector(ball.x - player.x, (ball.y - player.y)*0.5).normalized();
         }
         if (ball.getBounds().intersects(bot.getBounds())) {
-            ball.direction = new h3d.Vector(ball.x - bot.x, ball.y - bot.y).normalized();
+            ball.direction = new h3d.Vector(ball.x - bot.x, (ball.y - bot.y)*0.5).normalized();
         }
         // abs для того чтобы мяч не застревал
         if (ball.y < 0) {
@@ -35,11 +35,15 @@ class Game extends Screen {
 
         if (ball.x < 0) {
             score.increment(true);
+            ball.startSpeed *= 1.1;
             ball.setToStart();
+            bot.setToStart();
         }
         if (ball.x > hxd.Window.getInstance().width) {
             score.increment(false);
+            ball.startSpeed *= 1.1;
             ball.setToStart();
+            bot.setToStart();
         }
 
         ball.update(dt);
