@@ -11,6 +11,13 @@ class Player extends h2d.Bitmap {
     }
 
     public function update(dt: Float) {
-        y = hxd.Window.getInstance().mouseY;
+        var mouseY = hxd.Window.getInstance().mouseY;
+        if (mouseY < tile.height * 0.5) {
+            y = tile.height * 0.5;
+        } else if (mouseY > hxd.Window.getInstance().height - tile.height * 0.5) {
+            y = hxd.Window.getInstance().height - tile.height * 0.5;
+        } else {
+            y = mouseY;
+        }
     }
 }

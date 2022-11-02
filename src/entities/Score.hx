@@ -30,12 +30,12 @@ class Score {
     public function increment(isPlayer: Bool) {
         if (isPlayer) {
             playerScore += 1;
-            if (playerScore > 9) {
+            if (playerScore >= 9) {
                 parent.setScreen(new GameOver(app, true));
             }
         } else {
             botScore += 1;
-            if (botScore > 9) {
+            if (botScore >= 9) {
                 parent.setScreen(new GameOver(app, false));
             }
         }

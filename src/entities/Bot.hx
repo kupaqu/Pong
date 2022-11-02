@@ -15,6 +15,11 @@ class Bot extends h2d.Bitmap {
 
     public function update(dt: Float) {
         y += (ball.y - y) * 0.1;
+        if (y < tile.height * 0.5) {
+            y = tile.height * 0.5;
+        } else if (y > hxd.Window.getInstance().height - tile.height * 0.5) {
+            y = hxd.Window.getInstance().height - tile.height * 0.5;
+        }
     }
 
     public function setToStart() {
